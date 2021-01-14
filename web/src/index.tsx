@@ -32,7 +32,7 @@ const tokenRefreshLink = new TokenRefreshLink({
     }
   },
   fetchAccessToken: () => {
-    return fetch('http://localhost:4000/refresh_token', {
+    return fetch('https://jwtappo.herokuapp.com/refresh_token', {
       method: 'POST',
       credentials: 'include',
     });
@@ -47,7 +47,7 @@ const tokenRefreshLink = new TokenRefreshLink({
 });
 
 const httpLink = createHttpLink({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'https://jwtappo.herokuapp.com/graphql',
   credentials: 'include', // don't put this line inside of ApolloClient!
 });
 

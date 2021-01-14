@@ -6,6 +6,6 @@ export const sendRefreshToken = (res: Response, token: string) => {
   res.cookie('jid', token, {
     httpOnly: true,
     expires: expiryDate,
-    path: '/refresh_token',
+    sameSite: 'lax',
   });
 };

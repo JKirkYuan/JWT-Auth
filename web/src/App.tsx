@@ -8,7 +8,7 @@ const App: React.FC<AppProps> = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:4000/refresh_token', {
+    fetch('https://jwtappo.herokuapp.com/refresh_token', {
       method: 'POST',
       credentials: 'include',
     }).then(async (x) => {
