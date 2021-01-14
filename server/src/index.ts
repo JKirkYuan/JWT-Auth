@@ -68,6 +68,8 @@ import { createTypeormConn } from './utils/createTypeormConn';
       resolvers: [UserResolvers],
     }),
     context: ({ req, res }) => ({ req, res }),
+    introspection: true,
+    playground: true,
   });
 
   apolloServer.applyMiddleware({ app, cors: false });
