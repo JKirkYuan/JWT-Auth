@@ -15,6 +15,7 @@ import { createTypeormConn } from './utils/createTypeormConn';
 (async () => {
   const app = express();
   console.log(process.env.NODE_ENV);
+  console.log(process.env.ORIGIN);
   app.use(
     cors({
       origin:
