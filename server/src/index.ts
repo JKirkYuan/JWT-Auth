@@ -27,6 +27,7 @@ import { createTypeormConn } from './utils/createTypeormConn';
   );
 
   app.use(cookieParser());
+  app.set('trust proxy', 1);
 
   app.get('/', (_req, res) => {
     res.send('hello');
