@@ -71,7 +71,8 @@ import { createTypeormConn } from './utils/createTypeormConn';
 
   apolloServer.applyMiddleware({ app, cors: false });
 
-  app.listen(4000, () => {
-    console.log('express server started');
+  const port = process.env.PORT || 4000;
+  app.listen(port, () => {
+    console.log('express server started on port: ', port);
   });
 })();
