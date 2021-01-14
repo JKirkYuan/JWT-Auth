@@ -1,4 +1,3 @@
-import { ENGINE_METHOD_NONE } from 'constants';
 import { Response } from 'express';
 
 export const sendRefreshToken = (res: Response, token: string) => {
