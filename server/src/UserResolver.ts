@@ -65,7 +65,7 @@ export class UserResolvers {
   async login(
     @Arg('email') email: string,
     @Arg('password') password: string,
-    @Ctx() { res }: MyContext
+    @Ctx() { req, res }: MyContext
   ): Promise<LoginResponse> {
     const user = await User.findOne({ where: { email } });
 
@@ -82,6 +82,8 @@ export class UserResolvers {
     // login success
 
     sendRefreshToken(res, createRefreshToken(user));
+
+    console.log(req.cookies);
 
     return {
       accessToken: createAccessToken(user),
