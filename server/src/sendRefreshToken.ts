@@ -1,3 +1,4 @@
+import { ENGINE_METHOD_NONE } from 'constants';
 import { Response } from 'express';
 
 export const sendRefreshToken = (res: Response, token: string) => {
@@ -10,5 +11,7 @@ export const sendRefreshToken = (res: Response, token: string) => {
   res.cookie('jid', token, {
     httpOnly: true,
     expires: expiryDate,
+    sameSite: 'none',
+    secure: true,
   });
 };
