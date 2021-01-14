@@ -17,6 +17,9 @@ import { createTypeormConn } from './utils/createTypeormConn';
   app.set('trust proxy', 1);
   console.log(process.env.NODE_ENV);
   console.log(process.env.ORIGIN);
+
+  app.use(cookieParser());
+
   app.use(
     cors({
       origin:
@@ -24,10 +27,9 @@ import { createTypeormConn } from './utils/createTypeormConn';
           ? process.env.ORIGIN!
           : 'http://localhost:3000',
       credentials: true,
+      allowedHeaders: ['Content-Type', 'Authorization'],
     })
   );
-
-  app.use(cookieParser());
 
   app.get('/', (_req, res) => {
     res.send('hello');

@@ -34,8 +34,6 @@
    "scripts": {
       "build": "tsc",
       "dev": "NODE_ENV=development nodemon dist/index.js",
-      "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts",
-      "postinstall": "yarn run build"
-
+      "start": "NODE_ENV=development nodemon --exec ts-node src/index.ts"
    }
 }
