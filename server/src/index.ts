@@ -14,6 +14,7 @@ import { createTypeormConn } from './utils/createTypeormConn';
 
 (async () => {
   const app = express();
+  app.set('trust proxy', 1);
   console.log(process.env.NODE_ENV);
   console.log(process.env.ORIGIN);
   app.use(
