@@ -14,6 +14,7 @@ import { createTypeormConn } from './utils/createTypeormConn';
 
 (async () => {
   const app = express();
+  console.log(process.env.NODE_ENV);
   app.use(
     cors({
       origin:
@@ -58,12 +59,6 @@ import { createTypeormConn } from './utils/createTypeormConn';
 
     return res.send({ ok: true, accessToken: createAccessToken(user) });
   });
-
-  // const connectionOptions = await getConnectionOptions(process.env.NODE_ENV);
-
-  // console.log(connectionOptions);
-
-  // await createConnection({ ...connectionOptions, name: 'default' });
 
   await createTypeormConn();
 
