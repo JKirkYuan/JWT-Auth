@@ -17,3 +17,4 @@ View here [https://jwt-auth-chi.vercel.app/](https://jwt-auth-chi.vercel.app/).
   - You can open [http://localhost:3000](http://localhost:3000) to view in the front end!
   - You can open [http://localhost:4000](http://localhost:4000) to view in the back end!
   - Play with the graphql playground through [http://localhost:4000/graphql](http://localhost:4000/graphql)
+  - Login with bob! email: `bobby@bob.com` password: `123`
