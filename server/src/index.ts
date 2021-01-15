@@ -69,10 +69,10 @@ import { createTypeormConn } from './utils/createTypeormConn';
       resolvers: [UserResolvers],
     }),
     context: ({ req, res }) => ({ req, res }),
-    /* uncomment to have the playground in prod
+    // /* comment to not have GQL playground in prod
     introspection: true,
     playground: true,
-    */
+    // */
   });
 
   apolloServer.applyMiddleware({ app, cors: false });
