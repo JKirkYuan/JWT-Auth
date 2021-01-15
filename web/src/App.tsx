@@ -7,8 +7,10 @@ interface AppProps {}
 const App: React.FC<AppProps> = () => {
   const [loading, setLoading] = useState(true);
 
+  const URL = process.env.REACT_APP_URL || 'http://localhost:4000';
+
   useEffect(() => {
-    fetch('https://jwtappo.herokuapp.com/refresh_token', {
+    fetch(`${URL}/refresh_token`, {
       method: 'POST',
       credentials: 'include',
     }).then(async (x) => {
@@ -17,7 +19,7 @@ const App: React.FC<AppProps> = () => {
       setAccessToken(data.accessToken);
       setLoading(false);
     });
-  }, []);
+  }, [URL]);
 
   if (loading) {
     return <div>Loading...</div>;

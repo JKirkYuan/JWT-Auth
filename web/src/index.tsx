@@ -13,6 +13,8 @@ import jwtDecode, { JwtPayload } from 'jwt-decode';
 import { getAccessToken, setAccessToken } from './accessToken';
 import App from './App';
 
+const URL = process.env.REACT_APP_URL || 'http://localhost:4000';
+
 const tokenRefreshLink = new TokenRefreshLink({
   accessTokenField: 'accessToken',
   isTokenValidOrUndefined: () => {
@@ -32,7 +34,7 @@ const tokenRefreshLink = new TokenRefreshLink({
     }
   },
   fetchAccessToken: () => {
-    return fetch('https://jwtappo.herokuapp.com/refresh_token', {
+    return fetch(`${URL}/refresh_token`, {
       method: 'POST',
       credentials: 'include',
     });
@@ -47,7 +49,7 @@ const tokenRefreshLink = new TokenRefreshLink({
 });
 
 const httpLink = createHttpLink({
-  uri: 'https://jwtappo.herokuapp.com/graphql',
+  uri: `${URL}/graphql`,
   credentials: 'include', // don't put this line inside of ApolloClient!
 });
 

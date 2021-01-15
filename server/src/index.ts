@@ -15,8 +15,6 @@ import { createTypeormConn } from './utils/createTypeormConn';
 (async () => {
   const app = express();
   app.set('trust proxy', 1);
-  console.log(process.env.NODE_ENV);
-  console.log(process.env.ORIGIN);
 
   app.use(cookieParser());
 
@@ -71,8 +69,10 @@ import { createTypeormConn } from './utils/createTypeormConn';
       resolvers: [UserResolvers],
     }),
     context: ({ req, res }) => ({ req, res }),
+    /* uncomment to have the playground in prod
     introspection: true,
     playground: true,
+    */
   });
 
   apolloServer.applyMiddleware({ app, cors: false });
