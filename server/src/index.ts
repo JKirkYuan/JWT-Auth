@@ -3,16 +3,23 @@ import 'reflect-metadata';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
-import { UserResolvers } from './UserResolver';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import { verify } from 'jsonwebtoken';
+import * as request from 'request';
 import { User } from './entity/User';
+import { UserResolvers } from './UserResolver';
 import { createAccessToken, createRefreshToken } from './auth';
 import { sendRefreshToken } from './sendRefreshToken';
 import { createTypeormConn } from './utils/createTypeormConn';
 
 (async () => {
+  function ping() {
+    request.get('https://jwtappo.herokuapp.com/', () => {
+      console.log('Pinging dyno');
+    });
+  }
+
   const app = express();
   app.set('trust proxy', 1);
 
@@ -80,5 +87,9 @@ import { createTypeormConn } from './utils/createTypeormConn';
   const port = process.env.PORT || 4000;
   app.listen(port, () => {
     console.log('express server started on port: ', port);
+    ping();
+    setInterval(() => {
+      ping();
+    }, 1500000);
   });
 })();
